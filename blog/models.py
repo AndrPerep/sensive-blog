@@ -26,7 +26,10 @@ class PostQuerySet(models.QuerySet):
 class TagQuerySet(models.QuerySet):
 
     def popular(self):
-        return Tag.objects.annotate(related_posts_count=models.Count('posts')).order_by('-related_posts_count')[:5]
+        return Tag.objects.annotate(related_posts_count=models.Count('posts')).order_by('-related_posts_count')
+    #
+    # def fetch_with_posts_count(self):
+    #     return Tag.objects.annotate(posts_count=models.Count('posts'))
 
 
 class Post(models.Model):
