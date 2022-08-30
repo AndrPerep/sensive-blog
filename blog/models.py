@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class PostQuerySet(models.QuerySet):
 
     def popular(self):
-        return Post.objects.annotate(likes_count=models.Count('likes')).order_by('-likes_count')[:5]
+        return Post.objects.annotate(likes_count=models.Count('likes')).order_by('-likes_count')
 
     def fetch_with_comments_count(self):
         most_popular_posts_ids = [post.id for post in self]
